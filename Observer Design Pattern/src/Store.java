@@ -9,14 +9,14 @@ public class Store {
         StocksObservable iphoneStockObservable = new IphoneObservableImpl();
 
         NotificationAlertObserver observer1 = new EmailAlertObserverImpl("raunak1497@gmail.com",iphoneStockObservable);
-        NotificationAlertObserver observer2 = new EmailAlertObserverImpl("georgian4165@gmail.com", iphoneStockObservable);
-        NotificationAlertObserver observer3 = new MobileAlertObserverImpl("ronny1497",iphoneStockObservable);
+        NotificationAlertObserver observer2 = new MobileAlertObserverImpl("ronny1497",iphoneStockObservable);
+        NotificationAlertObserver observer3 = new EmailAlertObserverImpl("georgian4165@gmail.com", iphoneStockObservable);
 
-        iphoneStockObservable.add(observer1);
-        iphoneStockObservable.add(observer2);
-        iphoneStockObservable.add(observer3);
+        iphoneStockObservable.addObserver(observer1);
+        iphoneStockObservable.addObserver(observer2);
+        iphoneStockObservable.addObserver(observer3);
 
-        iphoneStockObservable.setStockCount(10);
+        iphoneStockObservable.setStockCount(13);
         iphoneStockObservable.setStockCount(0);
         iphoneStockObservable.setStockCount(10);
     }

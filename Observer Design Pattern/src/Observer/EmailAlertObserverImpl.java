@@ -3,20 +3,20 @@ package Observer;
 import Observable.StocksObservable;
 
 public class EmailAlertObserverImpl implements NotificationAlertObserver{
-    String emailId;
-    StocksObservable observable;
+   private String emailId;
+   private StocksObservable stocksObservable;
 
-    public EmailAlertObserverImpl(String emailId, StocksObservable observable) {
-        this.emailId = emailId;
-        this.observable = observable;
-    }
+   public EmailAlertObserverImpl(String emailId,StocksObservable stocksObservable) {
+       this.emailId = emailId;
+       this.stocksObservable = stocksObservable;
+   }
 
-    @Override
-    public void update() {
-        sendMail(emailId, "product is in stock hurry up");
-    }
+   @Override
+    public void update(){
+       sendEmailUpdate(emailId, "The product is back in stock");
+   }
 
-    private void sendMail(String emailId, String msg) {
-        System.out.println("Email sent to: " + emailId);
-    }
+   private void sendEmailUpdate(String emailId, String message){
+       System.out.println("Sending email to " + emailId + "with the message" + message);
+   }
 }

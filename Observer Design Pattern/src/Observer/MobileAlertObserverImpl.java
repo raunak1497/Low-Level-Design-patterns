@@ -3,19 +3,19 @@ package Observer;
 import Observable.StocksObservable;
 
 public class MobileAlertObserverImpl implements NotificationAlertObserver{
-    String username;
-    StocksObservable observable;
+    private String username;
+    private StocksObservable stocksObservable;
 
-    public MobileAlertObserverImpl(String username,StocksObservable observable){
+    public MobileAlertObserverImpl(String username, StocksObservable stocksObservable) {
         this.username = username;
-        this.observable = observable;
+        this.stocksObservable = stocksObservable;
     }
-
+    @Override
     public void update(){
-        sendUpdateOnMobile(username,"product is in stock hurry up");
+        sendUpdateOnMobile(username, "The product is back in stock");
     }
 
-    private void sendUpdateOnMobile(String username, String msg){
-        System.out.println("Alert sent to user " + username);
+    private void sendUpdateOnMobile(String username, String message){
+        System.out.println("Alert sent to user" + username + "with the following message: " + message );
     }
 }

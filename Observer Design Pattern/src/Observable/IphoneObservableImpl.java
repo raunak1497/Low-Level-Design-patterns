@@ -6,28 +6,37 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class IphoneObservableImpl implements StocksObservable{
-    public List<NotificationAlertObserver> observerList =  new ArrayList<>();
-    public int stockCount  = 0;
+
+    private List<NotificationAlertObserver> observerList =  new ArrayList<>();
+    private int stockCount = 0;
 
     @Override
-    public void add(NotificationAlertObserver observer) {observerList.add(observer);}
+    public void addObserver(NotificationAlertObserver observer){
+        observerList.add(observer);
+    }
 
     @Override
-    public void remove(NotificationAlertObserver observer) {observerList.remove(observer);}
+    public void removeObserver(NotificationAlertObserver observer){
+        observerList.remove(observer);
+    }
 
     @Override
-    public void notifySubscribers() {
-        for(NotificationAlertObserver observer : observerList){
+    public void notifyObservers(){
+        for(NotificationAlertObserver observer: observerList){
             observer.update();
         }
     }
 
-    public void setStockCount(int newStockAdded){
-        if(stockCount == 0){
-            notifySubscribers();
-        }
-        stockCount = stockCount + newStockAdded;
+    @Override
+    public int getStockCount(){
+        return stockCount;
     }
 
-    public int getStockCount() {return stockCount;}
+    @Override
+    public void setStockCount(int newStockAdded){
+        if(stockCount == 0 && newStockAdded > 0){
+            notifyObservers();
+        }
+        stockCount = newStockAdded;
+    }
 }
