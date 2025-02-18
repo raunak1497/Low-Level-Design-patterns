@@ -4,13 +4,13 @@
 //}
 
 
-public class WiredKeyboard extends Keyboard {
+public class WiredKeyboard implements Keyboard {
     @Override
-    void keyPressed(){
+    public void keyPressed(){
         System.out.println("key pressed");
     }
     @Override
-    void keyBoardType(){
+    public void keyBoardType(){
         System.out.println("This is a wired keyboard");
     }
 }

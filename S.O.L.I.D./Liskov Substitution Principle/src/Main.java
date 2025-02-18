@@ -7,11 +7,16 @@ public class Main {
         List<Vehicle> vehicleList = new ArrayList<>();
         vehicleList.add(new Car());
         vehicleList.add(new Motorcycle());
-        //adding Bicycle will throw NULL pointer exception
         vehicleList.add(new Bicycle());
 
         for(Vehicle vehicle: vehicleList) {
-            System.out.println(vehicle.getNoOfWheels().toString());
+            System.out.println("Number of wheels: " + vehicle.getNoOfWheels());
+            if(vehicle instanceof EngineVehicle){
+                System.out.println("Has Engine : " + ((EngineVehicle) vehicle).hasEngine());
+            }else if(vehicle instanceof NonEngineVehicle){
+                System.out.println("Has Engine : " + ((NonEngineVehicle) vehicle).hasEngine());
+            }
+
         }
     }
 }

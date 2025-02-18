@@ -1,10 +1,10 @@
-public class BluetoothKeyboard extends Keyboard{
+public class BluetoothKeyboard implements Keyboard {
     @Override
-    void keyPressed(){
+    public void keyPressed(){
         System.out.println("key pressed");
     }
     @Override
-     void keyBoardType(){
+     public void keyBoardType(){
         System.out.println("This is a bluetooth keyboard");
      }
 }
