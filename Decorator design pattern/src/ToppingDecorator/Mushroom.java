@@ -2,15 +2,15 @@ package ToppingDecorator;
 
 import BaseClass.BasePizza;
 
-public class Mushroom extends ToppingDecorator {
-    BasePizza basePizza;
+import java.util.Scanner;
 
-    public Mushroom(BasePizza basePizza){
-        this.basePizza = basePizza;
+public class Mushroom extends ToppingDecorator {
+    BasePizza pizza;
+    public Mushroom(BasePizza pizza){
+        this.pizza = pizza;
     }
 
-    @Override
     public int cost(){
-        return this.basePizza.cost()+50;
+        return pizza.cost()+20;
     }
 }
