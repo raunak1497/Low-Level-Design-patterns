@@ -28,6 +28,7 @@ public class Directory {
     public void ls(){
         System.out.println(directoryName);
         for(Object obj : objectsList){
+            //using if-else statement and checking instance needs to be changed
             if(obj instanceof File){
                 ((File) obj).ls();
             }
