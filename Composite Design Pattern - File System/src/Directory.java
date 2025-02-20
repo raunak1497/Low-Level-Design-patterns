@@ -2,15 +2,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class Directory {
+public class Directory implements FileSystem{
 
 
     private String directoryName;
-    public List<Objects> objectsList;
+    public List<FileSystem> fileSystems;
 
     public Directory(String directoryName) {
         this.directoryName = directoryName;
-        objectsList = new ArrayList<>();
+        fileSystems = new ArrayList<>();
     }
 
     public String getDirectoryName() {
@@ -21,20 +21,26 @@ public class Directory {
         this.directoryName = directoryName;
     }
 
-    public void addObject(Object object) {
-        objectsList.add((Objects) object);
+    public void addFile(FileSystem object) {
+        if(object == null) {
+            throw new IllegalArgumentException("FileSystem object cannot be null");
+        }
+        fileSystems.add(object);
     }
 
+    @Override
     public void ls(){
-        System.out.println(directoryName);
-        for(Object obj : objectsList){
-            //using if-else statement and checking instance needs to be changed
-            if(obj instanceof File){
-                ((File) obj).ls();
-            }
-            if(obj instanceof Directory){
-                ((Directory) obj).ls();
-            }
+        ls(0);
+    }
+
+    @Override
+    public void ls(int depth){
+        for(int i=0; i<depth; i++){
+            System.out.print("\t");
+        }
+        System.out.println("Directory : " + directoryName);
+        for(FileSystem fileSystem : fileSystems){
+            fileSystem.ls(depth+1);
         }
     }
 }
