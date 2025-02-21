@@ -1,6 +1,3 @@
-public enum Operation {
-    ADD,
-    SUBTRACT,
-    MULTIPLY,
-    DIVIDE,
+public interface Operation {
+    int apply(int left, int right);
 }

@@ -1,5 +1,5 @@
 public class Number implements ArithmeticExpression{
-    private int number;
+    private final int number;
 
     public Number(int number){
         this.number = number;
